@@ -1,11 +1,19 @@
 import React from 'react';
+import './ExpenseItem.css';
 
 function ExpenseItem() {
+    const expenseDate = new Date(2021, 3, 28);
+    const expenseTitle = 'Car Insurance';
+    const expenseAmount = 294.67;
+
+    // expenseDate is a date object, cant be output as text: toISOString()
+
     return (
-        <div>
-            <div> March 28th 2021 </div>
-            <div> <h2> Care Insurance </h2>
-            <div> $294.67 </div>
+        <div className="expense-item">
+            <div> {expenseDate.toISOString()} </div>        
+            <div className="expense-item__description"> 
+            <h2> {expenseTitle} </h2>
+            <div className="expense-item__price"> ${expenseAmount}</div>
             </div>
         </div>
     );
