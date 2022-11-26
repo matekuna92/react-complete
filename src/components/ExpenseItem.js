@@ -3,8 +3,6 @@ import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
 
 function ExpenseItem(props) {
-    
-
     // expenseDate is a date object, cant be output as text: toISOString()
     return (
         <div className="expense-item">
