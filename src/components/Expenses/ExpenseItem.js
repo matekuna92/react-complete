@@ -3,7 +3,7 @@ import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
-function ExpenseItem(props) {
+const ExpenseItem = (props) => {
     // expenseDate is a date object, cant be output as text: toISOString()
     return (
         // cant use custom components as a Wrapper! Need to define props.children in Card.js to make it work
