@@ -8,15 +8,15 @@ const ExpenseForm = () => {
     const [enteredDate, setEnteredDate] = useState('');
 
     // using 1 state instead of multiply states: have to update all properties when called
-    const [userInput, setUserInput] = useState({
+   /*  const [userInput, setUserInput] = useState({
         enteredTitle: '',
         enteredAmount: '',
         enteredDate: ''
-    })
+    }) */
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
-     //   console.log(enteredTitle);
+        console.log(enteredTitle);
 /*      setUserInput({
         ...userInput,           // have to copy the other properties we didnt set, so they wont be lost
         enteredTitle: event.target.value, // if we only set the Title, other properties would be lost, have to set all the 3
@@ -50,8 +50,20 @@ const ExpenseForm = () => {
      }) */
     }
 
+    const submitHandler = (event) => {
+        event.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)    // parse enteredDate String from state as Date
+        };
+
+        console.log(expenseData);
+    }
+
     return (
-        <form>
+        <form onSubmit={submitHandler} >
             <div className='new-expense__controls'>
                 
                 <div className='new-expense__control'>
