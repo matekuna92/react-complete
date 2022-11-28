@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
 const ExpenseItem = (props) => {
 
-    let title = props.title;
+    const [title, setTitle] = useState(props.title);  // returns an array: [variable, setVariable]
+
     const clickHandler = () => {
-        title = 'Updated!';
-        console.log(title);
+        setTitle('Updated!');
+        console.log(title);     // still shows the original title values in console!
+        // calling the "set" updating function doesnt change the value itself, instead it schedules the state update
+        // so the new variable isnt available after the setTitle function. The whole component is called again
+        // (setState solves the problem of "components rendering only once, when the page load" problem), and the whole code
+        // will be evaluated in this component, so we see the new value in the browser
     }
 
     // expenseDate is a date object, cant be output as text: toISOString()
