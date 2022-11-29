@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -59,7 +59,9 @@ const ExpenseForm = () => {
             date: new Date(enteredDate)    // parse enteredDate String from state as Date
         };
 
-        console.log(expenseData);
+       // console.log(expenseData);
+        props.onSaveExpenseData(expenseData);  // executing the function here, in NewExpense we only use a pointer to the function:
+                                               // onSaveExpenseData={saveExpenseDataHandler}  - not saveExpenseDataHandler() !!
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
@@ -76,12 +78,12 @@ const ExpenseForm = () => {
 
                 <div className='new-expense__control'>
                     <label> Amount </label>
-                    <input type='number' min='0.01' step='0.01'  value={enteredAmount} onChange={amountChangeHandler} />
+                    <input type='number' min='0.01' step='0.01' value={enteredAmount} onChange={amountChangeHandler} />
                 </div>
 
                 <div className='new-expense__control'>
                     <label> Date </label>
-                    <input type='date' min='2019-01-01' max='2022-12-31'  value={enteredDate} onChange={dateChangeHandler} />
+                    <input type='date' min='2019-01-01' max='2022-12-31' value={enteredDate} onChange={dateChangeHandler} />
                 </div>
 
             </div>
