@@ -2,6 +2,7 @@ import React from 'react';
 
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
+import ExpensesFilter from './components/Expenses/ExpensesFilter';
 
 const App = () => {
   
@@ -32,10 +33,15 @@ const App = () => {
     console.log(expense);
   }
 
+    const filterYearHandler = year => {
+        console.log('year in app js', year);
+  }
+
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses expenseItems={expenses} />
+        <ExpensesFilter onFilterYear={filterYearHandler} />
+        <NewExpense onAddExpense={addExpenseHandler} />
+        <Expenses expenseItems={expenses} />
     </div>
   );
 }
