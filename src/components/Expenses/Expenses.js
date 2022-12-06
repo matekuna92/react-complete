@@ -7,10 +7,15 @@ import ExpensesFilter from './ExpensesFilter';
 const Expenses = (props) => {
 	const expenses = props.expenseItems;
     const [filteredYear, setFilteredYear] = useState('2020');
+    const [currentExpenses, setCurrentExpenses] = useState(expenses);
 
     const filterYearHandler = selectedYear => {
         setFilteredYear(selectedYear);
         console.log('state:', filteredYear);
+
+        setCurrentExpenses(prevExpenses => {
+            return expenses.filter(expense => expense.date.getYear() === filteredYear);
+        })
     }
 
     return (
