@@ -18,23 +18,29 @@ const Expenses = (props) => {
         return expense.date.getFullYear().toString() === filteredYear;
     });
 
+    let expensesContent = <p> No expenses found in selected year </p>;
+
+    if(filteredExpenses.length > 0) {
+        expensesContent = filteredExpenses.map(expense => (
+            <ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+            />
+        ));
+    }
+
     // * && js trick: right part of the && is returned, when the left part is true
     // ternary alternative: {filteredExpenses.length === 0 ? (<p> No expenses found in selected year </p>) : ....
     return (
+        <div>
             <div className="expenses">
                 <ExpensesFilter onFilterYear={filterYearHandler} selected={filteredYear} />
-                {filteredExpenses.length === 0 && <p> No expenses found in selected year </p>}
-                {filteredExpenses.length > 0 &&
-                filteredExpenses.map(expense => (
-                    <ExpenseItem
-                        key={expense.id}
-                        title={expense.title}
-                        amount={expense.amount}
-                        date={expense.date}
-                    />
-                ))}
-		</div>
-	)
+                {expensesContent}
+    		</div>
+        </div>
+	);
 };
 
 export default Expenses;
