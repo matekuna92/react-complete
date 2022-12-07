@@ -42,6 +42,6 @@ const App = () => {
         <Expenses expenseItems={expenses} />
     </div>
   );
-}
+};
 
 export default App;

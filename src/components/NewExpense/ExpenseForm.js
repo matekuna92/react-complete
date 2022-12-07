@@ -28,7 +28,7 @@ const ExpenseForm = (props) => {
         setUserInput( (prevState) => {
             return { ...prevState, enteredTitle: event.target.value };
         }); */
-    }
+    };
 
     const amountChangeHandler = (event) => {
         setEnteredAmount(event.target.value);
@@ -38,7 +38,7 @@ const ExpenseForm = (props) => {
         ...userInput,
         enteredAmount: event.target.value, 
      }) */
-    }
+    };
 
     const dateChangeHandler = (event) => {
       setEnteredDate(event.target.value);
@@ -48,7 +48,7 @@ const ExpenseForm = (props) => {
         ...userInput,           
         enteredDate: event.target.value,
      }) */
-    }
+    };
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -65,7 +65,7 @@ const ExpenseForm = (props) => {
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
-    }
+    };
 
     return (
         <form onSubmit={submitHandler} >
@@ -93,6 +93,6 @@ const ExpenseForm = (props) => {
             </div>
         </form>
     );
-}
+};
 
 export default ExpenseForm;

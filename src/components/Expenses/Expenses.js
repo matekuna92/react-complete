@@ -11,25 +11,30 @@ const Expenses = (props) => {
     const filterYearHandler = selectedYear => {
         setFilteredYear(selectedYear);
         console.log('state:', filteredYear);
-    }
+    };
 
+    // already getting data in component, only need to change the way it has to be rendered, then no need for state managing, only
     const filteredExpenses = expenses.filter(expense => {
         return expense.date.getFullYear().toString() === filteredYear;
-    })
+    });
 
+    // * && js trick: right part of the && is returned, when the left part is true
+    // ternary alternative: {filteredExpenses.length === 0 ? (<p> No expenses found in selected year </p>) : ....
     return (
             <div className="expenses">
                 <ExpensesFilter onFilterYear={filterYearHandler} selected={filteredYear} />
-                {filteredExpenses.map(expense => (
+                {filteredExpenses.length === 0 && <p> No expenses found in selected year </p>}
+                {filteredExpenses.length > 0 &&
+                filteredExpenses.map(expense => (
                     <ExpenseItem
                         key={expense.id}
                         title={expense.title}
                         amount={expense.amount}
                         date={expense.date}
                     />
-                    ))}
+                ))}
 		</div>
 	)
-}
+};
 
 export default Expenses;
