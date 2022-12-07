@@ -24,8 +24,9 @@ const ExpensesChart = (props) => {
         chartDataPoints[expenseMonth].value += expense.amount;  // array also starts from 0, so expenseMonth can be used as index
     }
 
-    return
+    return (
         <Chart dataPoints={chartDataPoints} />
+   )
 };
 
 export default ExpensesChart;
